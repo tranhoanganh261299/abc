@@ -1,0 +1,88 @@
+<header>
+  <title>Chọn mẫu CV</title>
+</header>
+<div class="container" style="margin: 45px; margin: auto">
+  <div class="#">
+    <div class="#">
+      <a>
+        <img
+          style="width: 100%; margin-bottom: 50px; margin-top: 30px; height: 300px; border-radius: 3px; box-shadow: 0 1px 2px rgb(0 0 0); -moz-box-shadow: 0 1px 2px rgba(0,0,0,0.1); -webkit-box-shadow: 0 3px 4px rgb(0 0 0);"
+          src="https://firebasestorage.googleapis.com/v0/b/gao-internfinder-d778c.appspot.com/o/Capture.PNG?alt=media&token=bbf57c54-3a0b-4303-b6d7-32344a0595c8"
+          alt="Tìm việc siêu tốc">
+      </a>
+    </div>
+    <h4 style="text-align: center;     margin: -26px 0 30px; color: red">Chọn mẫu để có một Cv ấn tượng</h4>
+    <section id="demo" class="carousel slide" data-ride="carousel" style="margin: auto;
+    background: #2db34d;
+    width: 825px;">
+      <!--      <ul class="carousel-indicators">-->
+      <!--        <li data-target="#demo" data-slide-to="0" class="active"></li>-->
+      <!--        <li data-target="#demo" data-slide-to="1"></li>-->
+      <!--        <li data-target="#demo" data-slide-to="2"></li>-->
+      <!--      </ul>-->
+      <div class="carousel-inner">
+        <div class="carousel-item active">
+          <img src="../../../assets/admin/img/cv1.png" alt="RIKKEISOFT"
+               style="height: 676px">
+          <div class="carousel-caption">
+            <button onclick="document.getElementById('id01').style.display='block'" class="btn ">Chọn mẫu</button>
+            <div class="modal" id="id01" aria-hidden="true">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h6  style="margin-right: 10px; color: #00000c"> Bạn có muốn chọn mẫu CV ?</h6>
+                </div>
+
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-warning" onclick="document.getElementById('id01').style.display='none'">Đóng</button>
+                  <button type="submit" class="btn btn-success"  (click)="download(1)" >Đồng ý</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="carousel-item">
+          <img src="../../../assets/admin/img/maucv2.png" alt="FPT" style="height: 676px">
+          <div class="carousel-caption">
+            <button onclick="document.getElementById('id02').style.display='block'" class="btn ">Chọn mẫu</button>
+            <div class="modal" id="id02" aria-hidden="true">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h6  style="margin-right: 10px; color: #00000c"> Bạn có muốn chọn mẫu CV ?</h6>
+                </div>
+
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-warning" onclick="document.getElementById('id02').style.display='none'">Đóng</button>
+                  <button type="submit" class="btn btn-success"  (click)="download(2)" >Đồng ý</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="carousel-item">
+          <img src="../../../assets/admin/img/maucv33.PNG" alt="MGM"  style="height: 676px">
+          <div class="carousel-caption">
+            <button onclick="document.getElementById('id03').style.display='block'" class="btn ">Chọn mẫu</button>
+            <div class="modal" id="id03" aria-hidden="true">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h6  style="margin-right: 10px; color: #00000c"> Bạn có muốn chọn mẫu CV ?</h6>
+                </div>
+
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-warning" onclick="document.getElementById('id03').style.display='none'">Đóng</button>
+                  <button type="submit" class="btn btn-success"  (click)="download(3)" >Đồng ý</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <a class="carousel-control-prev" href="#demo" data-slide="prev">
+        <span class="carousel-control-prev-icon"></span>
+      </a>
+      <a class="carousel-control-next" href="#demo" data-slide="next">
+        <span class="carousel-control-next-icon"></span>
+      </a>
+    </section>
+  </div>
+</div>

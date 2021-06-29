@@ -1,0 +1,366 @@
+<header>
+  <title>Tạo CV</title>
+</header>
+<div id="nextbackFixed" class="wizard-header sticky-wrapper" style="top: 0px;">
+  <div class="cb-container">
+    <div class="wizard-title"><img src="https://static.careerbuilder.vn/themes/cv_tool/images/symbol-cvhay.png"></div>
+  </div>
+</div>
+
+<div class="col-xs-12 wizard-navigation" id="wizard-navigation" style="margin-top: 15px;">
+  <ul class="row workflow wl-step1" id="workflow_step" style="display: block;
+    margin: auto;">
+    <li class="text1"><a href="/create_cv" data-step="1" class="select-step active">Thông tin</a></li>
+    <li class="text2"><a href="javascript:void(0);" data-step="2" class="select-step">Chọn mẫu CV</a></li>
+  </ul>
+</div>
+<div class="swc-wrapper">
+  <div class="container-fluid">
+    <div class="cb-container" style="">
+      <script type="text/javascript" src="https://static.careerbuilder.vn/js/jquery.formatcurrency.js"></script>
+      <script type="text/javascript" src="https://static.careerbuilder.vn/js/autoNumeric.min.js"></script>
+      <link rel="stylesheet" type="text/css" href="https://static.careerbuilder.vn/js/jquery_ui/jquery.multiselect_upgrade.css">
+      <link rel="stylesheet" type="text/css" href="https://static.careerbuilder.vn/js/jquery_ui/themes/ui-lightness/jquery-ui.css">
+      <script type="text/javascript" src="https://static.careerbuilder.vn/js/jquery_ui/jquery-ui-upgrade.js"></script>
+      <script type="text/javascript" src="https://static.careerbuilder.vn/js/jquery_ui/jquery.multiselect_upgrade.js"></script>
+      <script type="text/javascript" src="https://careerbuilder.vn/cv-hay/getdistricts"></script>
+      <script language="javascript" src="https://static.careerbuilder.vn/ckeditor448/ckeditor.js"></script>
+      <script language="javascript" src="https://static.careerbuilder.vn/ckeditor448/adapters/jquery.js"></script>
+      <script type="text/javascript" src="https://static.careerbuilder.vn/js/jquery.cycle.all.2.74.js"></script>
+      <link href="https://static.careerbuilder.vn/js/datetimepicker/DateTimePicker.css" rel="stylesheet">
+      <script src="https://static.careerbuilder.vn/js/datetimepicker/DateTimePicker.js" type="text/javascript"></script>
+      <script src="https://static.careerbuilder.vn/js/datetimepicker/i18n/DateTimePicker-i18n.js" type="text/javascript"></script>
+      <div class="col-xs-12 step-content form" >
+        <div class="row" style="">
+          <div class="col-xs-12 col-sm-12 col-md-9" style="">
+            <div class="blockMy col-xs-12 pv-profile-section personalinfo-section" id="personalinfo-section">
+              <header class="card-header">
+                <h2 class="card-heading"><span class="iconheading"><i class="fa fa-user"></i></span>Thông tin cá nhân <span class="col_ff0000bold">*</span></h2>
+              </header>
+              <form name="profile-form" id="profile-form"  >
+                <div class="col-xs-12 pv-profile-section-body">
+                  <div class="profile-photo-container">
+                    <div class="EntityPhoto-circle-8">
+                      <img id="img_mem_avatar" [src]="imageSrc ||'https://firebasestorage.googleapis.com/v0/b/fir-angular-66583.appspot.com/o/avatar-1577909_1280.png?alt=media&token=d7eeaf14-9686-48ee-b313-973b26c57435'" width="160" height="160"     class="profile-photo-edit">
+                    </div>
+                    <div class="upload-photo">
+                      <label class="fileContainer"><i class="fa fa-edit"></i>
+                        <input (change)="saveimg($event); readURL($event)" type="file" class="file" id="fileAvatar" name="fileAvatar"></label>
+                    </div>
+                    <div class="note">Bạn chỉ dùng được các tập tin dạng *.jpeg,  *.jpg, *.png, kích thước 160x160 pixel, dung lượng không vượt quá 2MB.</div>
+                  </div>
+                  <div class="row">
+                    <label class="col-xs-12 col-sm-3">Họ và Tên Lót <span class="col_ff0000bold">*</span></label>
+                    <div class="col-xs-12 col-sm-5">
+                      <input type="text" class="form-control" name="firstname" id="firstname"  [(ngModel)]="cv_created.firstName" maxlength="30">
+                    </div>
+                  </div>
+                  <div class="row">
+                    <label class="col-xs-12 col-sm-3">Tên <span class="col_ff0000bold">*</span></label>
+                    <div class="col-xs-12 col-sm-5">
+                      <input type="text" class="form-control" name="lastname" id="lastname" [(ngModel)]="cv_created.lastName" maxlength="30">
+                    </div>
+                  </div>
+                  <div class="row">
+                    <label class="col-xs-12 col-sm-3">Giới tính <span class="col_ff0000bold">*</span></label>
+                    <div class="col-xs-12 col-sm-5">
+                      <div class="form-group">
+                        <label class="radio-inline"> <input type="radio" id="gender_m" [(ngModel)]="cv_created.gender" value="Nam" name="gender">Nam</label>
+                        <label class="radio-inline"><input type="radio" id="gender_f"  [(ngModel)]="cv_created.gender" value="Nữ" name="gender">Nữ</label>
+                        <span id="error_gender"></span>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <label class="col-xs-12 col-sm-3">Ngày sinh <span class="col_ff0000bold">*</span></label>
+                    <div class="col-xs-12 col-sm-3 datebox">
+                      <input type="date" id="start" name="birthday"  [(ngModel)]="cv_created.dayOfBirth" class="form-control"
+                             min="1985-01-01" max="2005-12-31">
+                    </div>
+                  </div>
+                  <div class="row">
+                    <label class="col-xs-12 col-sm-3">Số điện thoại <span class="col_ff0000bold">*</span></label>
+                    <div class="col-xs-12 col-sm-5">
+                      <input type="text" class="form-control" name="mobile" id="mobile"  [(ngModel)]="cv_created.phone" maxlength="20">
+                    </div>
+                  </div>
+                  <div class="row">
+                    <label class="col-xs-12 col-sm-3">Email</label>
+                    <div class="col-xs-12 col-sm-5">
+                      <input type="email" [(ngModel)]="cv_created.email" name="email" id="email" class="form-control" >
+                    </div>
+
+                  </div>
+                  <div class="row">
+                    <label class="col-xs-12 col-sm-3">Quốc tịch</label>
+                    <div class="col-xs-12 col-sm-5">
+                      <select name="slnationality" id="slnationality" class="form-control" [(ngModel)]="cv_created.quocTich">
+                        <option value="Việt Nam">Người Việt Nam</option>
+                        <option value="Bangladesh">Người Bangladesh</option>
+                        <option value="Campuchia">Người Campuchia</option>
+                        <option value="Canada">Người Canada</option>
+                        <option value="25">Người Công gô</option>
+                        <option value="Hoa Kỳ">Người Hoa Kỳ</option>
+                        <option value="Hàn Quốc">Người Hàn Quốc</option>
+                        <option value="Hồng Kong">Người Hồng Kong</option>
+                        <option value="169">Người Khác</option>
+                        <option value="19">Người Lào</option>
+                        <option value="9">Người Malaysia</option>
+                        <option value="21">Người Myanmar</option>
+                        <option value="2">Người Nhật</option>
+                        <option value="17">Người Qatar</option>
+                        <option value="23">Người Nước Ngoài</option>
+                        <option value="10">Người Singapore</option>
+                        <option value="5">Người Trung Quốc</option>
+                        <option value="16">Người Ukraine</option>
+                        <option value="3">Người Úc</option>
+                        <option value="20">Người Đài Loan</option>
+                      </select>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <label class="col-xs-12 col-sm-3">Tình trạng hôn nhân</label>
+                    <div class="col-xs-12 col-sm-5">
+                      <select class="form-control" name="slMarritial" [(ngModel)]="cv_created.honNhan">
+                        <option value="Đã kết hôn">Đã kết hôn</option>
+                        <option value="Độc thân" selected="selected">Độc thân</option>
+                      </select>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <label class="col-xs-12 col-sm-3">Quốc gia</label>
+                    <div class="col-xs-12 col-sm-5">
+                      <select name="slcountry" id="slcountry" class="form-control" title="LANG_ERROR_INDUSTRY_NULL" [(ngModel)]="cv_created.quocGia">
+                        <option value="Việt Nam">Việt Nam</option>
+                        <option value="Bangladesh">Bangladesh</option>
+                        <option value="Campuchia">Campuchia</option>
+                        <option value="Canada">Canada</option>
+                        <option value="Công Gô">Công Gô</option>
+                        <option value="Hoa Kỳ">Hoa Kỳ</option>
+                        <option value="Hàn Quốc">Hàn Quốc</option>
+                        <option value="Hồng Kông">Hồng Kông</option>
+                        <option value="Lào">Lào</option>
+                        <option value="Malaysia">Malaysia</option>
+                        <option value="Myanmar">Myanmar</option>
+                        <option value="Nhật Bản">Nhật Bản</option>
+                        <option value="Qatar">Qatar</option>
+                        <option value="Singapore">Singapore</option>
+                        <option value="Trung Quốc">Trung Quốc</option>
+                        <option value="Ukraine">Ukraine</option>
+                        <option value="Úc">Úc</option>
+                        <option value="Đài Loan">Đài Loan</option>
+                      </select>
+                    </div>
+                  </div>
+                  <div class="row" id="areaCity">
+                    <label class="col-xs-12 col-sm-3">Tỉnh / Thành phố</label>
+                    <div class="col-xs-12 col-sm-5">
+                      <select name="slcity" id="slcity" class="form-control" title="Vui lòng chọn thành phố / tỉnh thành" onchange="loadDistrictProfile(this.value);">
+                        <option value="">Chọn</option>
+                        <option value="4">Hà Nội</option>
+                        <option value="8">Hồ Chí Minh</option>
+                        <option value="76">An Giang</option>
+                        <option value="64">Bà Rịa - Vũng Tàu</option>
+                        <option value="781">Bạc Liêu</option>
+                        <option value="281">Bắc Cạn</option>
+                        <option value="240">Bắc Giang</option>
+                        <option value="241">Bắc Ninh</option>
+                        <option value="75">Bến Tre</option>
+                        <option value="650">Bình Dương</option>
+                        <option value="56">Bình Định</option>
+                        <option value="651">Bình Phước</option>
+                        <option value="62">Bình Thuận</option>
+                        <option value="78">Cà Mau</option>
+                        <option value="26">Cao Bằng</option>
+                        <option value="71">Cần Thơ</option>
+                        <option value="50">Dak Lak</option>
+                        <option value="1042">Dak Nông</option>
+                        <option value="511">Đà Nẵng</option>
+                        <option value="900">Điện Biên</option>
+                        <option value="61">Đồng Nai</option>
+                        <option value="67">Đồng Tháp</option>
+                        <option value="59">Gia Lai</option>
+                        <option value="19">Hà Giang</option>
+                        <option value="351">Hà Nam</option>
+                        <option value="39">Hà Tĩnh</option>
+                        <option value="320">Hải Dương</option>
+                        <option value="31">Hải Phòng</option>
+                        <option value="780">Hậu Giang</option><option value="18">Hòa Bình</option><option value="321">Hưng Yên</option><option value="58">Khánh Hòa</option><option value="77">Kiên Giang</option><option value="60">Kon Tum</option><option value="23">Lai Châu</option><option value="25">Lạng Sơn</option><option value="20">Lào Cai</option><option value="63">Lâm Đồng</option><option value="72">Long An</option><option value="350">Nam Định</option><option value="38">Nghệ An</option><option value="30">Ninh Bình</option><option value="68">Ninh Thuận</option><option value="210">Phú Thọ</option><option value="57">Phú Yên</option><option value="52">Quảng Bình</option><option value="510">Quảng Nam</option><option value="55">Quảng Ngãi</option><option value="33">Quảng Ninh</option><option value="53">Quảng Trị</option><option value="79">Sóc Trăng</option><option value="22">Sơn La</option><option value="66">Tây Ninh</option><option value="36">Thái Bình</option><option value="280">Thái Nguyên</option><option value="37">Thanh Hóa</option><option value="54">Thừa Thiên- Huế</option><option value="73">Tiền Giang</option><option value="74">Trà Vinh</option><option value="27">Tuyên Quang</option><option value="70">Vĩnh Long</option><option value="211">Vĩnh Phúc</option><option value="29">Yên Bái</option></select>
+                    </div>
+                  </div>
+                  <div class="row" id="areaDistrict">
+                    <label class="col-xs-12 col-sm-3">Quận/huyện</label>
+                    <div class="col-xs-12 col-sm-5">
+                      <input type="text" class="form-control" name="quan" id="quan" [(ngModel)]="quan"  maxlength="40">
+                      <!--                      <select name="sldistrict" id="sldistrict" class="form-control" title="Vui lòng chọn quận/huyện">-->
+                      <!--                        <option value="">Chọn</option></select>-->
+                    </div>
+                  </div>
+                  <div class="row">
+                    <label class="col-xs-12 col-sm-3">Địa chỉ (Số nhà, Đường) <span class="col_ff0000bold">*</span></label>
+                    <div class="col-xs-12 col-sm-8">
+                      <input type="text" class="form-control" [(ngModel)]="diachi" name="address" id="address">
+                    </div>
+                  </div>
+                </div>
+              </form>
+            </div>
+            <div class="blockMy col-xs-12 pv-profile-section objective-job-section" id="objective-job-section">
+              <header class="card-header">
+                <h2 class="card-heading"><span class="iconheading"><i class="fa fa-flag"></i></span>Mục tiêu nghề nghiệp <span class="col_ff0000bold">*</span></h2>
+              </header>
+              <form name="objective-form" id="objective-form" >
+                <div class="col-xs-12 pv-profile-section-body">
+                  <textarea class="form-control" rows="6" id="objective_job" name="objective_job" [(ngModel)]="cv_created.objective" ></textarea>
+                  <div class="clearall mar_top2 note">Vui lòng nhập tối đa không quá 2000 ký tự</div>
+                </div>
+              </form>
+            </div>
+            <div class="blockMy col-xs-12 pv-profile-section experience-section" id="experience-section">
+              <header class="card-header">
+                <h2 class="card-heading"><span class="iconheading"><i class="fa fa-briefcase"></i></span>Kinh nghiệm Làm Việc <span class="col_ff0000bold">*</span></h2>
+                <span class="button-actions" style="display:none;"><a href="#experience-section" onclick="showPopupContentCopyPaste('appendExperienceCV')">Xem lại thông tin</a></span>
+              </header>
+              <form name="objective-form" [formGroup]="kinhNghiemForm">
+                <div class="col-xs-12 pv-profile-section-body" >
+                  <div  *ngFor="let kinhNghiemFormGroup of getKinhNghiemFormControls() ; let i = index;">
+                    <div  [formGroup]="kinhNghiemFormGroup" style="margin-bottom: 20px">
+                      <div class="row">
+                                      <label class="col-xs-12 col-md-2">Công Việc </label>
+                                      <input class="col-xs-12 col-md-10 form-control" formControlName="contact" type="text" >
+                                    </div>
+                      <div class="row" style="margin-left: -20px" >
+                                      <div class="col-xs-12 col-sm-6">
+                                        <label class="col-xs-12 col-sm-4" style="margin-left: -10px">Ngày bắt đầu</label>
+                                        <input class="col-xs-12 col-sm-8 form-control" formControlName="dayStart" type="date" style="margin-left: 10px">
+                                      </div>
+                                      <div class="col-xs-12 col-sm-6">
+                                        <label class="col-xs-12 col-sm-4">Ngày kết thúc </label>
+                                        <input class="col-xs-12 col-sm-8 form-control" formControlName="dayEnd" type="date">
+                                      </div>
+
+                                    </div>
+                      <div style="text-align: right">
+                        <button class="btn btn-danger"  style="display: inline; margin-left:5px" (click)="removeKinhNghiem(i)"><i class="fas fa-trash-alt"></i></button>
+                      </div>
+                    </div>
+                  </div>
+                  <br>
+                  <button class="btn btn-next btn-wd" (click)="addKinhNghiem()"><i class="fas fa-plus-circle"></i></button>
+                </div>
+              </form>
+            </div>
+            <div class="blockMy col-xs-12 pv-profile-section experience-section" id="experienc-section">
+              <header class="card-header">
+                <h2 class="card-heading"><span class="iconheading"><i class="fa fa-list-ul"></i></span>Kỹ năng <span class="col_ff0000bold">*</span></h2>
+                <span class="button-actions" style="display:none;"><a href="#experience-section" onclick="showPopupContentCopyPaste('appendExperienceCV')">Xem lại thông tin</a></span>
+              </header>
+              <form name="objective-form" [formGroup]="skillForm" (ngSubmit)="send(skillForm.value)">
+                <div class="col-xs-12 pv-profile-section-body">
+                  <div class="row" *ngFor="let phone of getSkillsFormControls(); let i = index;">
+                    <label  class="col-xs-12 col-sm-2">Kỹ năng </label>
+                    <input   class="col-xs-12 col-sm-9 form-control" [formControl]="phone" type="text">
+                    <button class="btn btn-danger"  style="display: inline; margin-left:5px" (click)="removeSkill(i)"><i class="fas fa-trash-alt"></i></button>
+                  </div>
+                  <br>
+                  <button class="btn btn-next btn-wd" (click)="addSkill()"><i class="fas fa-plus-circle"></i></button>
+                </div>
+              </form>
+            </div>
+            <div class="blockMy col-xs-12 pv-profile-section experience-section">
+              <header class="card-header">
+                <h2 class="card-heading"><span class="iconheading"><i class="fa fa-trophy"></i></span>Thành tích nỗi bật <span class="col_ff0000bold">*</span></h2>
+                <span class="button-actions" style="display:none;"><a href="#experience-section" onclick="showPopupContentCopyPaste('appendExperienceCV')">Xem lại thông tin</a></span>
+              </header>
+              <form name="objective-form" [formGroup]="thanhtichForm" (ngSubmit)="sendTT(thanhtichForm.value)">
+                <div class="col-xs-12 pv-profile-section-body">
+                  <div class="row" *ngFor="let tt of getTTsFormControls(); let i = index;">
+                    <label  class="col-xs-12 col-sm-2">Thành tích </label>
+                    <input   class="col-xs-12 col-sm-9 form-control" [formControl]="tt" type="text">
+                    <button class="btn btn-danger"  style="display: inline; margin-left:5px" (click)="removeThanhtich(i)"><i class="fas fa-trash-alt"></i></button>
+                  </div>
+                  <br>
+                  <button class="btn btn-next btn-wd" (click)="addThanhTich()"><i class="fas fa-plus-circle"></i></button>
+                </div>
+              </form>
+            </div>
+            <div class="blockMy col-xs-12 pv-profile-section experience-section" >
+              <header class="card-header">
+                <h2 class="card-heading"><span class="iconheading"><i class="fa fa-briefcase"></i></span>Đã học tại <span class="col_ff0000bold">*</span></h2>
+                <span class="button-actions" style="display:none;"><a href="#experience-section" onclick="showPopupContentCopyPaste('appendExperienceCV')">Xem lại thông tin</a></span>
+              </header>
+              <form name="objective-form" [formGroup]="hoctapForm">
+                <div class="col-xs-12 pv-profile-section-body" >
+                  <div  *ngFor="let hocTapFormGroup of getHocTapFormControls() ; let i = index;">
+                    <div  [formGroup]="hocTapFormGroup" style="margin-bottom: 20px">
+                      <div class="row">
+                        <label class="col-xs-12 col-md-2">Trường </label>
+                        <input class="col-xs-12 col-md-10 form-control" formControlName="school" type="text" >
+                      </div>
+                      <div class="row" style="margin-left: -20px" >
+                        <div class="col-xs-12 col-sm-6">
+                          <label class="col-xs-12 col-sm-4" style="margin-left: -10px">Ngày nhập học</label>
+                          <input class="col-xs-12 col-sm-8 form-control" formControlName="dayStart" type="date" style="margin-left: 10px">
+                        </div>
+                        <div class="col-xs-12 col-sm-6">
+                          <label class="col-xs-12 col-sm-5">Ngày tốt nghiệp</label>
+                          <input class="col-xs-12 col-sm-7 form-control" formControlName="dayEnd" type="date">
+                        </div>
+                      </div>
+                      <div style="text-align: right">
+                        <button class="btn btn-danger"  style="display: inline; margin-left:5px" (click)="removeHocTap(i)"><i class="fas fa-trash-alt"></i></button>
+                      </div>
+                    </div>
+                  </div>
+                  <br>
+                  <button class="btn btn-next btn-wd" (click)="addHocTap()"><i class="fas fa-plus-circle"></i></button>
+                </div>
+              </form>
+            </div>
+          </div>
+          <div class="col-xs-12 col-sm-12 col-md-3">
+            <div class="elementscroll left-control" id="left-control-wrapper">
+              <div class="blockMy col-xs-12 change-CV btn-draft-resume"><i class="fa fa-save"></i><a href="javascript:void(0);" class="draft-resume passChk">Lưu nháp</a></div>
+              <div class="tabmenulinks">
+                <ul>
+                  <li class="active"><a href="#personalinfo-section" class="passChk">Thông tin cá nhân</a></li>
+                  <li class=""><a href="#objective-job-section" class="passChk">Mục tiêu nghề nghiệp</a></li>
+                  <li class=""><a href="#desired-job-section" class="passChk">Công Việc Mong Muốn</a></li>
+                  <li class=""><a href="#experience-section" class="passChk">Kinh nghiệm làm việc</a></li>
+                  <li class=""><a href="#education-section" class="passChk">Học vấn</a></li>
+                  <li class=""><a href="#skill-section" class="passChk">Kỹ năng chuyên môn</a></li>
+                  <li class=""><a href="#award-section" class="passChk">Thành tích nổi bật</a></li>
+                  <li class=""><a href="#references-section" class="passChk">Người tham khảo</a></li>
+                </ul>
+              </div>
+              <div class="blockMy col-xs-12 cvtips">
+                <header>
+                  <h3>Để CV không chỉ Hay mà còn Đẹp trong mắt Nhà tuyển dụng</h3>
+                </header>
+                <div class="content_fck">
+                  <div id="scroll-cvtips" style="width: 226px; position: relative; height: 247px;">
+                    <p style="width: 226px; position: absolute; top: 0px; left: 0px; display: none; z-index: 3; opacity: 0; height: 232px;">Ảnh chân dung trong CV tuy không quyết định tất cả nhưng lại có khả năng gây ấn tượng với Nhà tuyển dụng từ cái nhìn đầu tiên. Nếu CV của bạn có thêm ảnh chân dung, bạn cần nhớ những nguyên tắc cơ bản sau: Mỉm cười vừa đủ tạo thiện cảm; Trang phục trong ảnh nên có màu đơn sắc và tông tươi tắn, nhẹ nhàng; Phông nền của ảnh không rườm rà hay có nhiều chi tiết phụ.</p>
+                    <p style="position: absolute; top: 0px; left: 0px; display: block; z-index: 4; opacity: 1; width: 226px; height: 222px;">Một trong những điều tối kỵ nhưng khá nhiều người mắc phải là trình bày các thông tin trong CV không nhất quán. Việc tuỳ tiện in đậm, in nghiêng, lúc viết hoa lúc viết thường làm CV trở nên cực kỳ rối mắt! Lời khuyên từ các chuyên gia là bạn chỉ nên nhấn mạnh bằng cách in đậm và viết hoa cho các tiêu đề quan trọng như Chức danh, Công ty, Trình độ học vấn, … mà thôi</p>
+                    <p style="position: absolute; top: 0px; left: 0px; display: none; z-index: 1; opacity: 0; width: 226px; height: 232px;">Phông chữ trong CV phần nào thể hiện phong thái của bạn khi làm việc và Nhà tuyển dụng thường mong muốn được đọc các thông tin bạn đưa ra ở một cỡ chữ vừa phải, rõ ràng, không quá to cũng không quá nhỏ. Cỡ chữ gợi ý cho một CV chuẩn là tầm 12 đến 14 và bạn có thể kiểm tra thử bằng cách in CV ra trên khổ giấy A4 trước khi gửi đi ứng tuyển nhé.</p>
+                  </div>
+                  <a class="prev passChk" href="javascript:void(0);"><i class="fa fa-angle-left"></i></a>
+                  <a class="next passChk" href="javascript:void(0);"><i class="fa fa-angle-right"></i></a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div id="appendContentCV"></div>
+      <div id="htmlContentCV"></div>
+      <div id="date_time_picker" class="dtpicker-overlay dtpicker-mobile"><div class="dtpicker-bg"><div class="dtpicker-cont"><div class="dtpicker-content"><div class="dtpicker-subcontent"></div></div></div></div></div>
+      <div class="col-xs-12 step-content cv-mode-finish" id="Step4" style="display:none;">
+      </div>
+      <div style="margin-bottom: 12px">
+        <button type="button" class="btn btn-next btn-wd" (click)="add(skillForm.value, thanhtichForm.value, kinhNghiemForm.value, hoctapForm.value)" style="display: inline; background-color:#28a745"><a>Tiếp Theo</a></button>
+      </div>
+    </div>
+  </div>
+</div>
+
+

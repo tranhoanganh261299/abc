@@ -1,0 +1,61 @@
+<header>
+  <title>
+   Tạo mới bài đăng
+  </title>
+</header>
+<div class="d-flex flex-column">
+  <div id="container">
+
+      <form [formGroup]="contactForm"  id="contactForm" class="form-horizontal" role="form">
+      <h2>Thêm mới bài Đăng</h2>
+      <div class="form-group">
+        <label for="title" class="col-sm-3 control-label">Tiêu Đề</label>
+        <div class="col-sm-9">
+          <input formControlName="title" name="username" type="text" id="title"
+                 placeholder="Tiêu đề" class="form-control" autofocus>
+          <div>
+            <span style="color:red">Vui lòng nhập Tiêu Đề</span>
+          </div>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="content" class="col-sm-3 control-label">Nội Dung</label>
+        <div class="col-sm-9">
+          <textarea formControlName="content"  type="text" id="content"
+                 placeholder="Nội Dung" class="form-control" autofocus></textarea>
+          <div>
+            <span style="color:red">Vui lòng nhập Nội dung</span>
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-9">
+        <button [disabled]="!contactForm.valid" type="submit" class="btn btn-primary btn-block"  data-toggle="modal" data-target="#exampleModalCenter">
+          Thêm mới
+        </button>
+        <div>
+          <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="exampleModalCenterTitle">Thông Báo</h5>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <div class="modal-body">
+                  Bạn muốn thêm bài đăng vào Dữ liệu
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Đóng</button>
+                  <button type="button" class="btn btn-primary" (click)="createsharepost()">Thêm mới</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </form> <!-- /form -->
+
+  </div>
+</div>

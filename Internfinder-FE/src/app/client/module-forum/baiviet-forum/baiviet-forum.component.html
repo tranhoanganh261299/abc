@@ -1,0 +1,171 @@
+<header>
+  <title>Bài viết</title>
+</header>
+<div class="container" style="max-width: 980px">
+  <div class="col-large push-top">
+    <ul class="breadcrumbs">
+      <li><a href="#"><i class="fa fa-home fa-btn"></i>Trang chủ</a></li>
+      <li><h6 href="#">{{share.title}}</h6></li>
+    </ul>
+    <div class="post-list">
+      <div class="post">
+
+        <div class="user-info">
+          <a class="user-name">{{share.account?.username}}</a>
+
+          <a href="profile.html#profile-details">
+            <img class="avatar-large"
+                 [src]="share.account?.image ||'https://firebasestorage.googleapis.com/v0/b/fir-angular-66583.appspot.com/o/avatar-1577909_1280.png?alt=media&token=d7eeaf14-9686-48ee-b313-973b26c57435' "
+                 alt="">
+          </a>
+
+          <p class="desktop-only text-small">107 posts</p>
+
+          <p class="desktop-only text-small">23 threads</p>
+
+          <span class="online desktop-only">online</span>
+
+        </div>
+
+        <div class="post-content">
+          <div>
+            <h4>{{share.title}}</h4>
+            <br>
+            <p [innerHtml]="share.content">
+            </p>
+          </div>
+        </div>
+        <br>
+        <div class="post-date text-faded">
+          {{share.create_date|date:'dd/MM/yyyy' }}
+        </div>
+
+        <div class="reactions">
+          <button class="btn-default"><i class="fa fa-reply">Bình luận</i></button>
+        </div>
+
+      </div>
+      <!--      binh luan-->
+    </div>
+    <div>
+      <form [formGroup]="commentForm" (ngSubmit)="onSubmit()">
+        <div class="form-group">
+          <h5>Bình Luận</h5>
+          <div class="insert-comment" style=" width: 931px;">
+         <textarea class="input-comment" formControlName="content" type="text"
+                   style="width: 100%; height: 40px;">
+         </textarea>
+          </div>
+          <div *ngIf="this.id_now != this.account?.id; else ngcheckaccount">
+            <button class="btn-comment btn-succ ess" routerLink="/login/dangnhap/client">Thêm Bình luận</button>
+          </div>
+          <ng-template #ngcheckaccount>
+            <button [disabled]="!commentForm.valid" class="btn-comment btn-success">Bình luận</button>
+          </ng-template>
+        </div>
+
+      </form>
+    </div>
+  </div>
+  <div class="col-md-12">
+    <div class="card">
+      <div class="card-body">
+        <div class="row" *ngFor="let item of commentlist| paginate: {itemsPerPage: 5, currentPage: pageOfItems}">
+          <a>
+            <img class="avatar-small"
+                 [src]="item.account.image ||'https://firebasestorage.googleapis.com/v0/b/fir-angular-66583.appspot.com/o/avatar-1577909_1280.png?alt=media&token=d7eeaf14-9686-48ee-b313-973b26c57435' "
+                 alt="">
+          </a>
+          <div class="col-md-10">
+            <p>
+              <a class="float-left"><strong>{{item.account?.fullName || 'Người dùng hệ thống'}}</strong></a>
+              <span class="float-right">{{item.create_date | date:'dd/MM/yyyy'}}</span>
+            </p>
+            <br>
+            <div class="clearfix"></div>
+            <p>{{item.content}}
+            <p>
+            <div class="meta-line">
+              <div *ngIf="account.id != item.account?.id_account; else checkAccountComment">
+                <hr>
+              </div>
+            </div>
+            <ng-template #checkAccountComment>
+              <div class="media-body">
+                <div class="comment-meta">
+             <span>
+               <a class="btn-lg" onclick="document.getElementById('id01').style.display='block'">Xóa</a>
+              </span>
+                  <div class="modal" id="id01" aria-hidden="true">
+                  <span onclick="document.getElementById('id01').style.display='none'"
+                        class="close" title="Close Modal">×</span>
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <span onclick="document.getElementById('id01').style.display='none'"
+                              class="close" title="Close Modal">×</span>
+                        <h6  style="margin-right: 10px"> Bạn có muốn xóa bình luận này ?</h6>
+                      </div>
+                      <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" onclick="document.getElementById('id01').style.display='none'">Hủy</button>
+                        <button type="button" class="btn btn-danger" (click)="getCommentDeleteById(item.idcoment)">Đồng ý</button>
+                      </div>
+                    </div>
+                  </div>
+
+                  <script>
+                    // Get the modal
+                    var modal = document.getElementById('id01');
+
+                    // When the user clicks anywhere outside of the modal, close it
+                    window.onclick = function (event) {
+                      if (event.target == modal) {
+                        modal.style.display = "none";
+                      }
+                    }
+                  </script>
+                  <span>
+                <a class="btn-lg" role="button" data-toggle="collapse" href="#{{item.idcoment}}" aria-expanded="true"
+                   aria-controls="collapse">Sửa</a>
+              </span>
+                  <script>
+                    $('[data-toggle="collapse"]').on('click', function() {
+                      var $this = $(this),
+                        $parent = typeof $this.data('parent')!== 'undefined' ? $($this.data('parent')) : undefined;
+                      if($parent === undefined) { /* Just toggle my  */
+                        $this.find('.glyphicon').toggleClass('glyphicon-plus glyphicon-minus');
+                        return true;
+                      }
+                      /* Open element will be close if parent !== undefined */
+                      var currentIcon = $this.find('.glyphicon');
+                      currentIcon.toggleClass('glyphicon-plus glyphicon-minus');
+                      $parent.find('.glyphicon').not(currentIcon).removeClass('glyphicon-minus').addClass('glyphicon-plus');
+
+                    });
+                  </script>
+                  <div class="collapse" id="{{item.idcoment}}">
+                    <form [formGroup]="commentForm">
+                      <div class="form-group">
+                        <label>Bình luận của bạn</label>
+                        <textarea [value]="comment?.content" formControlName="content" name="comment"
+                                  class="form-control"
+                                  rows="3"></textarea>
+                      </div>
+                      <button type="submit" class="btn btn-default" (click)="getEditComments(item.idcoment)">Cập nhật
+                      </button>
+                    </form>
+                  </div>
+                </div>
+              </div>
+              <hr>
+            </ng-template>
+          </div>
+        </div>
+        <pagination-controls (pageChange)="pageOfItems = $event"></pagination-controls>
+      </div>
+    </div>
+  </div>
+  <!-- comments -->
+</div>
+<br>
+
+

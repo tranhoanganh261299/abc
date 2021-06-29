@@ -1,0 +1,64 @@
+<header>
+  <title>
+    Quản lý bình luận
+  </title>
+</header>
+<!-- Main Content -->
+<div id="content">
+  <div class="col-md-3">
+    <h1 class="h3 mb-2 text-gray-800">Danh Sách Bài Đăng</h1>
+    <form class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
+      <div class="input-group">
+        <input type="text" class="form-control" name="keyword"  [(ngModel)]="keyword" placeholder="Tìm Kiếm">
+        <div class="input-group-append">
+          <button class="btn btn-primary" type="button" (click)="search()">
+            <i class="fas fa-search fa-sm"></i>
+          </button>
+        </div>
+      </div>
+    </form>
+  </div>
+  <!-- Begin Page Content -->
+  <div class="container-fluid">
+    <!-- Pagasde Heading -->
+    <!-- DataTales Example -->
+    <div class="card mb-4">
+      <div class="card-header py-3">
+      </div>
+      <div class="card-body">
+        <div class="table-responsive">
+          <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+            <thead>
+            <tr>
+              <th>ID</th>
+              <th>Tiêu Đề</th>
+              <th>Người Tạo</th>
+              <th>Ngày Tạo</th>
+              <th>Hành Động</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let item of sharelist | paginate: {itemsPerPage: 5, currentPage: pageOfItems}" >
+              <td>{{item.idshare}}</td>
+              <td>{{item.title}}</td>
+              <td>{{item.account.username}}</td>
+              <td>{{item.modife_date|date:'dd/MM/yyyy'}}</td>
+              <td>
+              <a class="btn btn-warning" (click)=OnEdit(item.idshare)>Chi tiết Bình Luận</a>
+              </td>
+            </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+    <div class="card-footer pb-0 pt-3">
+      <pagination-controls (pageChange)="pageOfItems = $event"></pagination-controls>
+    </div>
+  </div>
+  <!-- /.container-fluid -->
+</div>
+<!-- End of Main Content -->
+
+<!-- Footer -->
+<!-- End of Footer -->

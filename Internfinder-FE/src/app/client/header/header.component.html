@@ -1,0 +1,116 @@
+
+<header class="header">
+  <div class="top_bar background-color-orange">
+    <div class="top_bar_container">
+      <div class="container">
+        <div class="row">
+          <div class="col">
+            <div class="top_bar_content d-flex flex-row align-items-center justify-content-start">
+              <ul class="top_bar_contact_list">
+                <li>
+                  <i class="fa fa-phone coll" aria-hidden="true"></i>
+                  <div class="contact-no">0777941772</div>
+                </li>
+                <li>
+                  <i class="fa fa-envelope coll" aria-hidden="true"></i>
+                  <div class="email"><a>interfinder@dtu.com</a>
+                  </div>
+                </li>
+              </ul>
+              <div *ngIf="!isLoggedIn;else loggout" class=" ml-auto ">
+                <ul class="top_bar_contact_list">
+                  <li class="dropdown ">
+                    <a class="dropdown-toggle" style="color: white" data-toggle="dropdown" >Đăng Nhập</a>
+                    <ul class="dropdown-menu">
+                      <li><a style="color: white" href="/login/dangnhap/client">Đăng Nhập</a></li>
+                    </ul>
+                  </li>
+                  <li class="dropdown ">
+                    <a class="dropdown-toggle" style="color: white" data-toggle="dropdown" >Đăng kí</a>
+                    <ul class="dropdown-menu">
+                      <li><a style="color: white" href="login/dangky/nhatuyendung">Đăng kí nhà tuyển dụng</a></li>
+                      <li><a style="color: white" href="login/dangky/sinhvien">Đăng kí sinh viên</a></li>
+                    </ul>
+                  </li>
+                </ul>
+              </div>
+              <ng-template #loggout class=" ml-auto ">
+                <ul style="margin-left: auto!important;" class="top_bar_contact_list">
+                  <li >
+                    <i class="fa fa-edit" aria-hidden="true"></i>
+                    <div class="contact-no">
+                      <a style="color: white;cursor: pointer" (click)="getOneByID()">Thông tin tài khoản</a>
+                    </div>
+                  <li >
+                    <i class="fa fa-edit" aria-hidden="true"></i>
+                    <div class="contact-no">
+                      <a (click)="logout()" style="color: white;cursor: pointer">&nbsp; Đăng xuất</a>
+                    </div>
+                  </li>
+                </ul>
+              </ng-template>
+              <div class="menu-ml">
+                <div class="hamburger menu_mm  search_button transparent search display"><i
+                  class="large material-icons font-color-white  search-icone  menu_mm " ></i>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <div class="header_container background-color-orange-light">
+    <div class="container">
+      <div class="row">
+        <div class="col">
+          <div class="header_content d-flex flex-row align-items-center justify-content-start">
+            <div class="logo_container">
+              <a href="index.html">
+                <img src="../../../assets/LOGO.png" style="max-width: 170px;" class="logo-text" alt="">
+              </a>
+            </div>
+            <nav class="main_nav_contaner ml-auto">
+              <ul class="main_nav">
+                <li><a href="">Trang chủ</a></li>
+                <li *ngIf="!isnhatuyendung" class="dropdown ">
+                  <a class="dropdown-toggle" data-toggle="dropdown" href="#">Quản lý CV</a>
+                  <ul class="dropdown-menu">
+                    <li><a href="/create_cv">Tạo CV</a></li>
+<!--                    <li><a href="job_detail.html">Tải CV lên</a></li>-->
+                    <li><a (click)="getOneByID2()">Quản lý cv</a></li>
+                  </ul>
+                </li>
+                <li class="dropdown ">
+                  <a target="_blank" href="https://unica.vn/">Khóa Học</a>
+                </li>
+                <li><a href="/timkiem-trangchu">Việc làm</a></li>
+                <li><a target="_blank" href="https://rtep.vn/">RTEP</a></li>
+                <li><a routerLink="/forum">Diễn đàn</a></li>
+                <li *ngIf="!isnhatuyendung; else disableform">
+                  </li>
+                  <ng-template #disableform>
+                    <a style="color: white;cursor: pointer" routerLink="/quanlybaidangtuyen">Quản lý bài đăng</a>
+                  </ng-template>
+              </ul>
+                <div  *ngIf="!isnhatuyendung; else disableform123" >
+              </div>
+              <ng-template  #disableform123>
+                <div class=" Post-Jobs">
+                <a  routerLink="/dangtuyendung" style="color: white;">Đăng bài</a>
+                </div>
+              </ng-template>
+              <div class="hamburger menu_mm menu-vertical">
+                <i class="large material-icons font-color-white menu_mm menu-vertical">menu</i>
+              </div>
+            </nav>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</header>
+

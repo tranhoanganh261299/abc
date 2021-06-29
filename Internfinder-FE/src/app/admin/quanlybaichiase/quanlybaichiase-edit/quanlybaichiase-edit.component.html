@@ -1,0 +1,41 @@
+
+<header>
+  <title>
+    Sửa bài đăng chia sẻ
+  </title>
+</header>
+<div class="d-flex flex-column">
+  <div id="container">
+
+    <form [formGroup]="contactForm" (ngSubmit)="OnEdit(share.idshare)" id="contactForm" class="form-horizontal" role="form">
+      <h2>Thêm mới bài Đăng</h2>
+      <div class="form-group">
+        <label for="title" class="col-sm-3 control-label">Tiêu Đề</label>
+        <div class="col-sm-9">
+          <input formControlName="title"[ngModel]="share.title" type="text" id="title"
+                 placeholder="Tiêu đề" class="form-control" autofocus>
+          <div>
+            <span style="color:red">Vui lòng nhập Tiêu Đề</span>
+          </div>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="content" class="col-sm-3 control-label">Nội Dung</label>
+        <div class="col-sm-9">
+          <textarea formControlName="content"  [ngModel]="share.content" type="text" id="content"
+                    placeholder="Nội Dung" class="form-control" autofocus></textarea>
+          <div>
+            <span style="color:red">Vui lòng nhập Nội dung</span>
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-9">
+        <button [disabled]="!contactForm.valid" type="submit" class="btn btn-primary btn-block">
+          Thêm mới
+        </button>
+      </div>
+
+    </form> <!-- /form -->
+
+  </div>
+</div>

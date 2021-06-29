@@ -1,0 +1,339 @@
+<head>
+  <title>Sửa bài</title>
+</head>
+<div style="height: 10px"></div>
+<section>>
+  <div class="create-cnt box-approval-rules" style="padding: 20px;
+    border-radius: 20px;">
+    <div class="main-colm my-3" >
+      <div class="mb-3">
+        <span>Quý khách đang sử dụng tài khoản</span>
+        <b class="ml-1 text-uppercase text-red">Miễn phí</b>
+        <span>.</span>
+        <span class="ml-1">Hiệu quả tuyển dụng thấp do bị hạn chế số lượng tin đăng - vị trí đăng tin kém nổi bật, khó tiếp cận Người tìm việc và bị giới hạn nhiều quyền lợi khác.</span>
+      </div>
+      <div>
+        <a class="btn btn-orange-46 font600 w-max-content" target="_blank" href="/bang-gia">Tìm hiểu và nâng cấp tài khoản &gt;&gt;</a>
+      </div>
+    </div>
+    <div class="text-main font600 font-italic text-approval d-pc">
+      <a target="_blank" href="/quy-dinh-dang-tin-tuyen-dung">Quy định duyệt tin trên Intership »</a>
+    </div>
+  </div>
+  <form class="create-paper" [formGroup]="formUpload" style="padding-top: 0px;">
+    <div class="row box">
+      <div class="col-md-12">
+        <h3 class="header-box-list d-none d-md-block">
+          <span class="title1">Thông tin công việc</span>
+          <span class="line"></span></h3>
+      </div>
+      <div class="col-md-12">
+        <label for="id_tt" class="form-label">Tiêu đề bài đăng</label>
+        <textarea type="text" class="form-control" formControlName="title" id="id_tt"  [(ngModel)]="editBai.title"  title="Nhập vào tiêu đề bài đăng" placeholder="VD: Nhân Viên Kinh Doanh (Thiết Kế Website Và Marketing Online)" style=" min-height: 50px;
+				max-height: 50px;"></textarea>
+        <div *ngFor="let validation of validation_messages.title">
+          <small class="text-danger"
+                 *ngIf="formUpload.get('title')!.hasError(validation.type) && formUpload.get('title')!.touched">
+            {{validation.message}}</small>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <label for="id_cd" class="form-label">Chức danh</label>
+        <input type="text" class="form-control" id="id_cd" formControlName="major" [(ngModel)]="editBai.major" required placeholder="VD: Nhân viên kinh doanh" >
+        <div *ngFor="let validation of validation_messages.major">
+          <small class="text-danger"
+                 *ngIf="formUpload.get('major')!.hasError(validation.type) && formUpload.get('major')!.touched">
+            {{validation.message}}</small>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <label for="ml" class="form-label">Mức lương</label>
+        <select class="form-select form-control" [(ngModel)]="editBai.salary"  formControlName="salary" aria-label="Default select example" id="ml">
+          <option value="5 đến 7">5 triệu -> 7 triệu đồng</option>
+          <option value="7 đến 10">7 triệu -> 10 triệu đồng</option>
+          <option value="10 triệu đến 15 triệu đồng">10 triệu -> 15 triệu đồng</option>
+          <option value="15 triệu đến 20 triệu đồng">15 triệu -> 20 triệu đồng</option>
+          <option value="Lương thỏa thuận">Lương thỏa thuận</option>
+        </select>
+      </div>
+      <div class="col-md-6">
+        <label for="id_sl" class="form-label">Số lượng cần tuyển</label>
+        <input type="number" [(ngModel)]="editBai.quanlity" formControlName="quanlity" class="form-control" id="id_sl" placeholder="0" required>
+        <div *ngFor="let validation of validation_messages.quanlity">
+          <small class="text-danger"
+                 *ngIf="formUpload.get('quanlity')!.hasError(validation.type) && formUpload.get('quanlity')!.touched">
+            {{validation.message}}</small>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <label for="id_add" class="form-label">Địa điểm làm việc</label>
+        <select class="form-select form-control" [(ngModel)]="editBai.work_loaction" formControlName="work_loaction" aria-label="Default select example" id="id_add">
+          <option value="An Giang">An Giang</option>
+          <option value="Bà Rịa - Vũng Tàu">Bà Rịa - Vũng Tàu</option>
+          <option value="Bắc Giang">Bắc Giang</option>
+          <option value="Bắc Kạn">Bắc Kạn</option>
+          <option value="Bạc Liêu">Bạc Liêu</option>
+          <option value="Bắc Ninh">Bắc Ninh</option>
+          <option value="Bến Tre">Bến Tre</option>
+          <option value="Bình Định">Bình Định</option>
+          <option value="Bình Dương">Bình Dương</option>
+          <option value="Bình Phước">Bình Phước</option>
+          <option value="Bình Thuận">Bình Thuận</option>
+          <option value="Bình Thuận">Bình Thuận</option>
+          <option value="Cà Mau">Cà Mau</option>
+          <option value="Cao Bằng">Cao Bằng</option>
+          <option value="Đắk Lắk">Đắk Lắk</option>
+          <option value="Đắk Nông">Đắk Nông</option>
+          <option value="Điện Biên">Điện Biên</option>
+          <option value="Đồng Nai">Đồng Nai</option>
+          <option value="Đồng Tháp">Đồng Tháp</option>
+          <option value="Đồng Tháp">Đồng Tháp</option>
+          <option value="Gia Lai">Gia Lai</option>
+          <option value="Hà Giang">Hà Giang</option>
+          <option value="Hà Nam">Hà Nam</option>
+          <option value="Hà Tĩnh">Hà Tĩnh</option>
+          <option value="Hải Dương">Hải Dương</option>
+          <option value="Hậu Giang">Hậu Giang</option>
+          <option value="Hòa Bình">Hòa Bình</option>
+          <option value="Hưng Yên">Hưng Yên</option>
+          <option value="Khánh Hòa">Khánh Hòa</option>
+          <option value="Kiên Giang">Kiên Giang</option>
+          <option value="Kon Tum">Kon Tum</option>
+          <option value="Lai Châu">Lai Châu</option>
+          <option value="Lâm Đồng">Lâm Đồng</option>
+          <option value="Lạng Sơn">Lạng Sơn</option>
+          <option value="Lào Cai">Lào Cai</option>
+          <option value="Long An">Long An</option>
+          <option value="Nam Định">Nam Định</option>
+          <option value="Nghệ An">Nghệ An</option>
+          <option value="Ninh Bình">Ninh Bình</option>
+          <option value="Ninh Thuận">Ninh Thuận</option>
+          <option value="Phú Thọ">Phú Thọ</option>
+          <option value="Quảng Bình">Quảng Bình</option>
+          <option value="Quảng Bình">Quảng Bình</option>
+          <option value="Quảng Ngãi">Quảng Ngãi</option>
+          <option value="Quảng Ninh">Quảng Ninh</option>
+          <option value="Quảng Trị">Quảng Trị</option>
+          <option value="Sóc Trăng">Sóc Trăng</option>
+          <option value="Sơn La">Sơn La</option>
+          <option value="Tây Ninh">Tây Ninh</option>
+          <option value="Thái Bình">Thái Bình</option>
+          <option value="Thái Nguyên">Thái Nguyên</option>
+          <option value="Thanh Hóa">Thanh Hóa</option>
+          <option value="Thừa Thiên Huế">Thừa Thiên Huế</option>
+          <option value="Tiền Giang">Tiền Giang</option>
+          <option value="Trà Vinh">Trà Vinh</option>
+          <option value="Tuyên Quang">Tuyên Quang</option>
+          <option value="Vĩnh Long">Vĩnh Long</option>
+          <option value="Vĩnh Phúc">Vĩnh Phúc</option>
+          <option value="Yên Bái">Yên Bái</option>
+          <option value="Phú Yên">Phú Yên</option>
+          <option value="Tp.Cần Thơ">Tp.Cần Thơ</option>
+          <option value="Tp.Đà Nẵng">Tp.Đà Nẵng</option>
+          <option value="Tp.Hải Phòng">Tp.Hải Phòng</option>
+          <option value="Tp.Hà Nội">Tp.Hà Nội</option>
+          <option value="TP  HCM">TP HCM</option>
+        </select>
+        <div *ngFor="let validation of validation_messages.work_loaction">
+          <small class="text-danger"
+                 *ngIf="formUpload.get('work_loaction')!.hasError(validation.type) && formUpload.get('work_loaction')!.touched">
+            {{validation.message}}</small>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <label for="id_capbac" class="form-label">Cấp bậc</label>
+        <select class="form-select form-control" [(ngModel)]="editBai.position" formControlName="position" aria-label="Default select example" id="id_capbac">
+          <option value="Mới tốt nghiệp/ Thực tập sinh">Mới tốt nghiệp/ Thực tập sinh</option>
+          <option value="Sinh Viên">Sinh viên</option>
+          <option value="Nhân Viên">Nhân Viên</option>
+          <option value="Tự do">Tự do</option>
+        </select>
+        <div *ngFor="let validation of validation_messages.position">
+          <small class="text-danger"
+                 *ngIf="formUpload.get('position')!.hasError(validation.type) && formUpload.get('position')!.touched">
+            {{validation.message}}</small>
+        </div>
+      </div>
+
+      <div class="col-md-6">
+        <label for="ntd" class="form-label">Ngành tuyển dụng</label>
+        <select id="ntd" class="form-select form-control" formControlName="category_idCategory" required [(ngModel)]="editBai.id_category" (change)='onOptionsSelected($event)'>
+          <option  *ngFor='let option of lisstnganh' [value]=option.idCategory.toString()>{{option.name}}</option>
+        </select>
+        <div *ngFor="let validation of validation_messages.category_idCategory">
+          <small class="text-danger"
+                 *ngIf="formUpload.get('category_idCategory')!.hasError(validation.type) && formUpload.get('category_idCategory')!.touched">
+            {{validation.message}}</small>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <label for="lhcv" class="form-label">Loại hình công việc</label>
+        <select class="form-select form-control"  [(ngModel)]="editBai.type_of_work" formControlName="type_of_work" aria-label="Default select example" id="lhcv">
+          <option value="Bán thời gian ">Bán thời gian</option>
+          <option value="Toàn thời gian ">Toàn thời gian</option>
+        </select>
+        <div *ngFor="let validation of validation_messages.type_of_work">
+          <small class="text-danger"
+                 *ngIf="formUpload.get('type_of_work')!.hasError(validation.type) && formUpload.get('type_of_work')!.touched">
+            {{validation.message}}</small>
+        </div>
+      </div>
+      <div class="col-md-12">
+        <label for="mtcv" class="form-label">Mô tả công việc</label>
+        <textarea type="text" class="form-control" [(ngModel)]="editBai.decriptions" formControlName="decriptions" id="mtcv" placeholder="Nhập vào mô tả công việc"required></textarea>
+        <div *ngFor="let validation of validation_messages.decriptions">
+          <small class="text-danger"
+                 *ngIf="formUpload.get('decriptions')!.hasError(validation.type) && formUpload.get('decriptions')!.touched">
+            {{validation.message}}</small>
+        </div>
+      </div>
+      <div class="col-md-12">
+        <label for="ql" class="form-label">Quyền lợi</label>
+        <textarea type="text" class="form-control" id="ql"  [(ngModel)]="editBai.benefit" formControlName="benefit" placeholder="Nhập vào quyền lợi"required></textarea>
+        <div *ngFor="let validation of validation_messages.benefit">
+          <small class="text-danger"
+                 *ngIf="formUpload.get('benefit')!.hasError(validation.type) && formUpload.get('benefit')!.touched">
+            {{validation.message}}</small>
+        </div>
+      </div>
+      <div></div>
+    </div>
+    <div class="row box">
+      <div class="col-md-12">
+        <h3 class="header-box-list d-none d-md-block">
+          <span class="title1">Yêu cầu công việc</span>
+          <span class="line"></span></h3>
+      </div>
+      <div class="col-md-6">
+        <label for="gt" class="form-label">Giới tính</label>
+        <select class="form-select form-control"  [(ngModel)]="editBai.sex" formControlName="sex" aria-label="Default select example" id="gt">
+          <option selected>Giới tính</option>
+          <option value="Nam">Nam</option>
+          <option value="Nữ">Nữ</option>
+          <option value="Mọi đối tượng">Mọi đối tượng</option>
+        </select>
+        <div *ngFor="let validation of validation_messages.sex">
+          <small class="text-danger"
+                 *ngIf="formUpload.get('sex')!.hasError(validation.type) && formUpload.get('sex')!.touched">
+            {{validation.message}}</small>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <label for="id_bc" class="form-label">Bằng cấp</label>
+        <select class="form-select form-control"   [(ngModel)]="editBai.degree" formControlName="degree" aria-label="Default select example" id="id_bc">
+          <option value="Đại học">Đại học</option>
+          <option value="Cao Đẳng">Cao đẳng</option>
+          <option value="THPT">THPT</option>
+          <option value="Tự do">Tự do</option>
+        </select>
+        <div *ngFor="let validation of validation_messages.degree">
+          <small class="text-danger"
+                 *ngIf="formUpload.get('degree')!.hasError(validation.type) && formUpload.get('degree')!.touched">
+            {{validation.message}}</small>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <label for="time" class="form-label">Hạn nạp hồ sơ</label>
+        <input type="date" min="{{date|date:'yyyy-MM-dd'}}"   [(ngModel)]="editBai.working_time" formControlName="working_time" class="form-control" id="time"required>
+        <div *ngFor="let validation of validation_messages.working_time">
+          <small class="text-danger"
+                 *ngIf="formUpload.get('working_time')!.hasError(validation.type) && formUpload.get('working_time')!.touched">
+            {{validation.message}}</small>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <label for="nn" class="form-label">Ngôn ngữ hồ sơ</label>
+        <select class="form-select form-control"   [(ngModel)]="editBai.profile_language"  formControlName="profile_language" aria-label="Default select example" id="nn">
+          <option value="Tiếng Anh">Tiếng Anh</option>
+          <option value="Tiếng Việt">Tiếng Việt</option>
+          <option value="Tiếng Trung">Tiếng Trung</option>
+          <option value="Tiếng Nhật">Tiếng Nhật</option>
+        </select>
+        <div *ngFor="let validation of validation_messages.profile_language">
+          <small class="text-danger"
+                 *ngIf="formUpload.get('profile_language')!.hasError(validation.type) && formUpload.get('profile_language')!.touched">
+            {{validation.message}}</small>
+        </div>
+      </div>
+      <div class="col-md-12">
+        <label for="yccv" class="form-label">Yêu cầu công việc</label>
+        <textarea type="text" class="form-control" id="yccv"   [(ngModel)]="editBai.job_requirements" formControlName="job_requirements" placeholder="Nhập vào yêu cầu công việc"required></textarea>
+        <div *ngFor="let validation of validation_messages.job_requirements">
+          <small class="text-danger"
+                 *ngIf="formUpload.get('job_requirements')!.hasError(validation.type) && formUpload.get('job_requirements')!.touched">
+            {{validation.message}}</small>
+        </div>
+      </div>
+      <div class="col-md-12">
+        <label for="ychs" class="form-label">Yêu cầu hồ sơ</label>
+        <textarea type="text" class="form-control" id="ychs"  [(ngModel)]="editBai.profile_requirement" formControlName="profile_requirement" placeholder="Nhập vào yêu cầu hồ sơ lý lịch" required></textarea>
+        <div *ngFor="let validation of validation_messages.profile_requirement">
+          <small class="text-danger"
+                 *ngIf="formUpload.get('profile_requirement')!.hasError(validation.type) && formUpload.get('profile_requirement')!.touched">
+            {{validation.message}}</small>
+        </div>
+      </div>
+    </div>
+    <div class="row box"  style="padding-bottom: 50px;">
+      <div class="col-md-12">
+        <h3 class="header-box-list d-none d-md-block">
+          <span class="title1">Thông tin liên hệ</span>
+          <span class="line"></span></h3>
+      </div>
+      <div class="col-md-6">
+        <label for="tnll" class="form-label">Họ và tên</label>
+        <input type="text" class="form-control" id="tnll"  [(ngModel)]="editBai.name_nd" formControlName="name_nd" placeholder="Nguyễn Văn A" required>
+        <div *ngFor="let validation of validation_messages.name_nd">
+          <small class="text-danger"
+                 *ngIf="formUpload.get('name_nd')!.hasError(validation.type) && formUpload.get('name_nd')!.touched">
+            {{validation.message}}</small>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <label for="id_mumber" class="form-label">Số điện thoại</label>
+        <input type="text" class="form-control" id="id_mumber"  [(ngModel)]="editBai.phone" formControlName="sdt_nd" placeholder="Nhập vào số điện thoại" required>
+        <div *ngFor="let validation of validation_messages.sdt_nd">
+          <small class="text-danger"
+                 *ngIf="formUpload.get('sdt_nd')!.hasError(validation.type) && formUpload.get('sdt_nd')!.touched">
+            {{validation.message}}</small>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <label for="id_add1" class="form-label">Địa chỉ</label>
+        <input type="text" class="form-control" id="id_add1"  [(ngModel)]="editBai.address_nd" formControlName="address_nd" placeholder="VD: Nhập vào địa chỉ" required>
+        <div *ngFor="let validation of validation_messages.address_nd">
+          <small class="text-danger"
+                 *ngIf="formUpload.get('address_nd')!.hasError(validation.type) && formUpload.get('address_nd')!.touched">
+            {{validation.message}}</small>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <label for="email" class="form-label">Email</label>
+        <input type="email" class="form-control" id="email"  [(ngModel)]="editBai.email_nd" formControlName="email_nd" placeholder="Nhập vào email" required>
+        <div *ngFor="let validation of validation_messages.email_nd">
+          <small class="text-danger"
+                 *ngIf="formUpload.get('email_nd')!.hasError(validation.type) && formUpload.get('email_nd')!.touched">
+            {{validation.message}}</small>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-12 upload">
+        <button type="button" onclick="document.getElementById('id01').style.display='block'"  [disabled]="!formUpload.valid" class="btn form-control " >
+          <i class="fa fa-upload"></i> Cập nhật </button>
+      </div>
+      <div class="modal" id="id01" aria-hidden="true">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h6  style="margin-right: 10px"> Bạn có muốn cập nhật bài đăng ?</h6>
+          </div>
+
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" onclick="document.getElementById('id01').style.display='none'">Đóng</button>
+            <button type="submit" class="btn btn-success"  (click)="Update()" >Đồng ý</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </form>
+</section>

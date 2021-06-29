@@ -1,0 +1,453 @@
+.interFD-content_tao{
+    padding: 16px;
+    background-color: #f9f9f9;
+}
+.native-grid.custom .rows{
+    grid-template-columns: repeat(12, minmax(0,1fr));
+}
+.native-grid .rows{
+    display: grid;
+    grid-gap: 0 24px ;
+    gap: 0 24px;
+    grid-template-columns: repeat(12,1fr);
+}
+.native-grid .rows.gap16{
+    grid-gap: 0 16px;
+    gap: 0 16px;
+}
+.inTitle{
+    padding: 16px;
+    display: flex;
+    align-items: center;
+    background-color: #fff;
+    border: 1px solid #ebebeb;
+    border-radius: 6px;
+}
+.mr3{
+    margin-right: 16px;
+}
+.native-grid .rows .colg-8{
+    grid-column: span 8;
+}
+.native-grid .rows .colg-4{
+    grid-column: span 4;
+}
+.blockttcn{
+    background: #fff;
+    border: 1px solid #eaeaf0;
+    padding: 0;
+    border-radius: 6px;
+    margin-top: 16px;
+    transition: .3s;
+    position: relative;
+}
+.userinfo{
+    display: flex;
+    position: relative;
+    padding: 24px 20px;
+}
+.userinfo .user-img.is-edit{
+    align-items: flex-start;
+}
+.userinfo .user-img{
+    display: flex;
+    flex: 0 0 130px;
+    justify-content: center;
+}
+.profile-picture{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.profile-picture:hover .profile-img::before{
+    opacity: 1;
+}
+.profile-img{
+    position: relative;
+    border-radius: 4px;
+}
+.profile-img::before{
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    border-radius: 4px;
+    z-index: 1;
+    background: rgba(0,0,0,.3);
+    opacity: 0;
+    transition: opacity .3s;
+}
+.profile-action{
+    margin-top: 8px;
+    text-align: center;
+}
+.profile-action-item{
+    display: inline-flex;
+    cursor: pointer;
+    border: 1px solid #ddd;
+    background-color: #fbfbfb;
+    border-radius: 4px;
+    padding: 8px;
+    margin: 0 8px;
+}
+.actionLabel{
+    display: none;
+}
+.userPlaceholder{
+    fill: #eeee;
+
+}
+.userPlaceholder:hover{
+    fill: grey;
+}
+.profile-action-item svg{
+    fill: #c8c8c8;
+    transition: fill .3s;
+
+}
+.profile-action-item:hover svg{
+    fill: #555555;
+}
+.userinfo .editing-info{
+    padding-left: 15px;
+    flex-basis: 100%;
+}
+.userinfo .editing-info .input-fields{
+    display: flex;
+    flex-wrap: wrap;
+}
+.userinfo .editing-info .input-fields .input-area{
+    flex-basis: calc(50% - 15px);
+    margin: 0 7.5px 25px;
+}
+.userinfo .editing-info .input-fields .input-area .input-label{
+    font-size: 13px;
+    font-weight: 600;
+    color: #333;
+    margin-bottom: 3px;
+}
+.input-module_input{
+    width: 100%;
+    height: 40px;
+    border: 1px solid #ddd;
+    border-radius: 3px;
+    padding: 15px 30px 15px 10px;
+    font-size: 13px;
+    outline: none;
+    transition:  3s;
+    white-space: nowrap;
+    overflow: hidden!important;
+    text-overflow: ellipsis;
+}
+.input-drop{
+    border: 1px solid #D7D7D7;
+    padding: 0.7em 0.5em;
+    width: 100%;
+    color: #a3a3a3;
+    font-size: 1em;
+    outline: none;
+}
+img, svg{
+    vertical-align: middle;
+}
+svg{
+    overflow: hidden;
+}
+.contact_CV{
+    padding: 2em 0 0 3em;
+    font-size: 14px;
+    position: relative;
+    height: 602px;
+}
+.contact .block-title{
+    font-size: 22px;
+    font-weight: 700;
+    margin-bottom: 0;
+    padding-top: 24px;
+    padding-left: 20px;
+    font-weight: bold;
+}
+.content-content{
+    padding: 20px;
+}
+.datetime{
+    border: 1px solid #D7D7D7;
+    padding: 0.1em 0.5em;
+    width: 100%;
+    color: #a3a3a3;
+    font-size: 1em;
+    outline: none;
+}
+.contact-radioGroup{
+    display: flex;
+    margin-top: 12px;
+}
+.contact-radioGroup>div{
+    min-width: 128px;
+}
+.radio-position{
+    display: block;
+}
+
+.btjemE .abc-radio{
+    cursor: default;
+    padding-left: 8px;
+}
+.btjemE .abc-radio input[type="radio"]{
+    position: static;
+    margin-left: 0px;
+    cursor: pointer;
+    opacity: 0;
+    z-index: 1;
+}
+.btjemE .abc-radio label{
+    cursor: pointer;
+    display: inline;
+    vertical-align: top;
+    position: relative;
+    padding-left: 5px;
+}
+[type=checkbox], [type=radio]{
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    padding: 0;
+}
+.summary{
+    font-size: 14px;
+    position: relative;
+    padding: 24px 20px;
+
+}
+.summary .edtitle{
+    font-size: 22px;
+    font-weight: 700;
+    margin-bottom: 16px;
+}
+.summary .editing-summary{
+    margin-bottom: 15px;
+}
+.animate_fadein{
+    -webkit-animation-name: fadeIn;
+    animation-name: fadeIn;
+}
+.animate{
+    -webkit-animation-duration: .3s;
+    animation-duration: .3s;
+}
+.TextEdittor{
+    border: 1px solid #ddd;
+    min-height: 12em;
+    border-radius: 6px;
+    padding: 8px;
+    background: #fff;
+
+}
+.TextEdittor_toolbar{
+    margin-bottom: 8px;
+}
+.TextEdittor_toolbar>span{
+    cursor: pointer;
+    margin-right: 8px;
+    font-weight: 700;
+    opacity: .5;
+    width: 25px;
+    height: 25px;
+    line-height: 25px;
+    text-align: center;
+    border: 1px solid #ccc;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 3px;
+    -webkit-transition: color .3s,border-color .3s,opacity .3s;
+    transition: color .3s,border-color .3s,opacity .3s;
+}
+.DraftEditor{
+    position: relative;
+}
+.DraftEditorContainer{
+    height: inherit;
+    text-align: initial;
+}
+.public-DraftEditor-content[contenteditable=true] {
+    -webkit-user-modify: read-write-plaintext-only;
+}
+.globalBlock{
+    padding:  24px 20px;
+}
+.globalBlockHeader{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    background: #fff;
+
+}
+.globalBlockTitle{
+    font-size: 22px;
+    font-weight: 700;
+    margin-bottom: 16px;
+}
+.globalBlockSubTitle{
+    font-size: 12px;
+    color: #555;
+    font-style: italic;
+}
+.globalBlockHistory{
+    margin-top: 16px;
+    display: flex;
+    align-items: center;
+}
+.globalBlockHistory_button{
+    display: inline-flex;
+    align-items: center;
+    color: #00b9f2;
+    font-weight: 700;
+    font-size: 14px;
+    padding: 8px 0;
+    background: transparent;
+    border: none;
+}
+.globalBlock-Item{
+    padding: 0;
+    margin: 17px 0 0;
+    display: flex;
+}
+.globalBlock-form{
+    background-color: #fbfbfb;
+    width: 100%;
+    border: 1px solid #f2f2f2;
+    border-radius: 4px;
+    -webkit-box-shadow: 0 0 2px 0 #eee;
+    box-shadow: 0 0 2px 0 #eee;
+    font-size: 14px;
+    color: #333;
+}
+.globalFormTitle {
+    font-size: 18px;
+    font-weight: 600;
+    color: #333;
+    padding: 24px;
+    background: #fff;
+}
+.globalFormBody {
+    padding: 24px;
+    border-top: 1px solid #f2f2f2;
+}
+.globalFormFooter {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 24px 24px;
+}
+.previewContent{
+    padding: 24px 32px;
+    background-color: #ddd;
+    border-radius: 6px;
+    position: -webkit-sticky;
+    position: sticky;
+    height: calc(100vh - 72px);
+    top: 16px;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+.pdfViewContent{
+    height: 100%;
+}
+.previewContent_toolbar{
+    text-align: center;
+    margin-bottom: 16px;
+    color: #666;
+    fill: #999;
+    stroke: #999;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+    z-index: 1;
+}
+.previewContent_toolbar .previewContent_toolbar_middle{
+    justify-content: center;
+}
+.previewContent_toolbar .truoc{
+    margin-right: 24px;
+    -webkit-transition: color .3s;
+    transition: color .3s;
+}.previewContent_toolbar .sau{
+    margin-left: 24px;
+    -webkit-transition: color .3s;
+    transition: color .3s;
+}
+ .pdfViewer .showscreen{
+     cursor: pointer;
+     position: absolute;
+     top: 50%;
+     left: 50%;
+     opacity: 0;
+     -webkit-transform: translate(-50%,-50%);
+     transform: translate(-50%,-50%);
+     -webkit-transform-origin: center center;
+     transform-origin: center center;
+     -webkit-transition: opacity .3s,-webkit-transform .3s ease 0s;
+     transition: opacity .3s,-webkit-transform .3s ease 0s;
+     transition: transform .3s ease 0s,opacity .3s;
+     transition: transform .3s ease 0s,opacity .3s,-webkit-transform .3s ease 0s;
+     z-index: 1;
+ }
+ .pdfDocument>div{
+     height: 100%;
+ }
+.pdfDocument .react-pdf{
+    height: 100%;
+}
+.pdfDocument .pdfPage{
+    display: flex;
+    justify-content: center;
+}
+.cikpxU{
+    border-radius: 4px;
+    border: none;
+    font-weight: 600;
+    padding: 0px 16px;
+    transition: background-color 0.3s ease 0s;
+}
+.cikpxU.clickable{
+    cursor: pointer;
+}
+.cikpxU.btn-primarycv{
+    color: white;
+    background-color: rgb(247, 148, 29);
+}
+.cikpxU.btn-md{
+    font-size: 14px;
+    height: 40px;
+    line-height: 40px;
+}
+.previewDownloadBTN button{
+    display: block;
+    margin: auto;
+}
+.upload-image input{
+  display: block !important;
+  width: 93px !important;
+  height: 45px !important;
+  opacity: 0 !important;
+  overflow: hidden !important;
+
+}
+.upload-image {
+  cursor:pointer;
+  width: 93px;
+  height: 45px;
+  overflow:hidden;
+  position:relative;
+  display:inline-block;
+  /*background-color:#fff;*/
+  background-repeat: no-repeat;
+  background-image:
+    url('http://icons.iconarchive.com/icons/martz90/circle/512/camera-icon.png');
+  background-size:30px 30px;
+  margin: 10px 0 0 60px;
+}

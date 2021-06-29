@@ -1,0 +1,75 @@
+<header>
+  <title>Đăng kí tài khoản</title>
+</header>
+<div class="login-right">
+  <div class="container">
+    <h3><strong>Đăng Ký Nhà Tuyển Dụng</strong></h3>
+    <div class="login-top">
+      <div class="form-info">
+        <form [formGroup]="formRegCompany" (ngSubmit)="onSubmit()">
+          <input formControlName="username" type="text" placeholder="Tên Đăng Nhập"  >
+          <div *ngFor="let validation of validation_messages.username">
+            <small class="text-danger"
+                   *ngIf="formRegCompany.get('username')!.hasError(validation.type) && formRegCompany.get('username')!.touched">
+              {{validation.message}}</small>
+          </div>
+          <input formControlName="password" type="password"  placeholder="Mật Khẩu " >
+          <div *ngFor="let validation of validation_messages.password">
+            <small class="text-danger"
+                   *ngIf="formRegCompany.get('password')!.hasError(validation.type) && formRegCompany.get('password')!.touched">
+              {{validation.message}}</small>
+          </div>
+          <input formControlName="re_password" type="password"  placeholder=" Nhập lại mật khẩu " >
+          <div *ngFor="let validation of validation_messages.re_password">
+            <small class="text-danger"
+                   *ngIf="formRegCompany.get('re_password')!.hasError(validation.type) && formRegCompany.get('re_password')!.touched">
+              {{validation.message}}</small>
+          </div>
+          <label style="margin-bottom: 10px;">Thông Tin Công Ty</label>
+
+          <input formControlName="companyName" type="text"  placeholder="Tên Công Ty ">
+          <div *ngFor="let validation of validation_messages.companyName">
+            <small class="text-danger"
+                   *ngIf="formRegCompany.get('companyName')!.hasError(validation.type) && formRegCompany.get('companyName')!.touched">
+              {{validation.message}}</small>
+          </div>
+          <input formControlName="company_address" type="text"  placeholder="Địa Chỉ Công Ty " >
+          <div *ngFor="let validation of validation_messages.company_address">
+            <small class="text-danger"
+                   *ngIf="formRegCompany.get('company_address')!.hasError(validation.type) && formRegCompany.get('company_address')!.touched">
+              {{validation.message}}</small>
+          </div>
+          <input formControlName="taxCode" type="text"  placeholder="Mã Số Thuế " >
+          <div *ngFor="let validation of validation_messages.taxCode">
+            <small class="text-danger"
+                   *ngIf="formRegCompany.get('taxCode')!.hasError(validation.type) && formRegCompany.get('taxCode')!.touched">
+              {{validation.message}}</small>
+          </div>
+          <input formControlName="website" type="text"  placeholder="Website " >
+          <div *ngFor="let validation of validation_messages.website">
+            <small class="text-danger"
+                   *ngIf="formRegCompany.get('website')!.hasError(validation.type) && formRegCompany.get('website')!.touched">
+              {{validation.message}}</small>
+          </div>
+          <input formControlName="phone" type="text"  placeholder="Số Điện thoại" >
+          <div *ngFor="let validation of validation_messages.phone">
+            <small class="text-danger"
+                   *ngIf="formRegCompany.get('phone')!.hasError(validation.type) && formRegCompany.get('phone')!.touched">
+              {{validation.message}}</small>
+          </div>
+          <input formControlName="email" type="text"   placeholder="Email liên hệ" >
+          <div *ngFor="let validation of validation_messages.email">
+            <small class="text-danger"
+                   *ngIf="formRegCompany.get('email')!.hasError(validation.type) && formRegCompany.get('email')!.touched">
+              {{validation.message}}</small>
+          </div>
+          <label class="hvr-sweep-to-right">
+            <input type="submit" value="Đăng ký">
+          </label>
+        </form>
+        <p>Bạn đã có tài khoản? <a href="login/dangnhap/client">Đăng nhập</a></p>
+      </div>
+
+    </div>
+  </div>
+</div>

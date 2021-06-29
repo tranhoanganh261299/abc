@@ -1,0 +1,114 @@
+<div class="d-flex flex-column" >
+  <div id="content">
+
+    <form  class="form-horizontal" role="form">
+      <h2>Chi Tiết Bài Đăng</h2>
+      <div class="form-group">
+        <label  class="col-sm-3 control-label">Nội Dung</label>
+        <div class="col-sm-9">
+          <textarea [(ngModel)]="account.decriptions" name="decriptions" type="text"    class="form-control"></textarea>
+        </div>
+      </div>
+      <div class="form-group">
+        <label  class="col-sm-3 control-label">Tiêu Đề</label>
+        <div class="col-sm-9">
+          <textarea  class="form-control" autofocus>{{account.title}}</textarea>
+        </div>
+      </div>
+      <div class="form-group">
+        <label  class="col-sm-3 control-label">Mức Lương</label>
+        <div class="col-sm-9">
+          <label   class="form-control" autofocus>{{account.salary}}</label>
+        </div>
+      </div> <div class="form-group">
+      <label  class="col-sm-3 control-label">Tên Người Đăng</label>
+      <div class="col-sm-9">
+        <label   class="form-control" autofocus>{{account.name_nd}}</label>
+      </div>
+    </div> <div class="form-group">
+      <label  class="col-sm-3 control-label">Chuyên Ngành</label>
+      <div class="col-sm-9">
+        <label   class="form-control" autofocus>{{account.major}}</label>
+      </div>
+    </div> <div class="form-group">
+      <label  class="col-sm-3 control-label">Quyền Lợi</label>
+      <div class="col-sm-9">
+        <textarea   class="form-control" autofocus>{{account.benefit}}</textarea>
+      </div>
+    </div> <div class="form-group">
+      <label  class="col-sm-3 control-label">Nơi Làm Việc</label>
+      <div class="col-sm-9">
+        <textarea   class="form-control" autofocus>{{account.work_loaction}}</textarea>
+      </div>
+    </div> <div class="form-group">
+      <label  class="col-sm-3 control-label">Địa Chỉ Liên Hệ</label>
+      <div class="col-sm-9">
+        <label  class="form-control" autofocus>{{account.address_nd}}</label>
+      </div>
+    </div> <div class="form-group">
+      <label  class="col-sm-3 control-label">Email</label>
+      <div class="col-sm-9">
+        <label  class="form-control" autofocus>{{account.email_nd}}</label>
+      </div>
+    </div> <div class="form-group">
+      <label class="col-sm-3 control-label">Trình Độ Ngoại Ngữ</label>
+      <div class="col-sm-9">
+        <label    class="form-control" autofocus>{{account.profile_language}}</label>
+      </div>
+    </div> <div class="form-group">
+      <label  class="col-sm-3 control-label">Giới Tính</label>
+      <div class="col-sm-9">
+        <label class="form-control" autofocus>{{account.sex}}</label>
+      </div>
+    </div>
+      <div class="form-group">
+        <label  class="col-sm-3 control-label">Số Điện Thoại</label>
+        <div class="col-sm-9">
+          <label  class="form-control" autofocus>{{account.phone}}</label>
+        </div>
+      </div>
+      <div class="form-group">
+        <label  class="col-sm-3 control-label">Trình Độ</label>
+        <div class="col-sm-9">
+          <label  class="form-control" autofocus>{{account.degree}}</label>
+        </div>
+        <div class="form-group">
+          <label  class="col-sm-3 control-label">ID Account</label>
+          <div class="col-sm-9">
+            <label class="form-control" autofocus>{{account.account.fullName}}</label>
+          </div>
+          <div class="form-group">
+            <label for="idCategory" class="col-sm-3 control-label">Category</label>
+            <div class="col-sm-9">
+              <label id="idCategory" class="form-control" autofocus>{{account.category.name}}</label>
+            </div>
+            <div class="col-sm-9">
+              <button   type="submit" class="btn btn-primary btn-block" data-toggle="modal" data-target="#exampleModalCenter">Quay Lại</button>
+              <div>
+                <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                  <div class="modal-dialog modal-dialog-centered" role="document">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalCenterTitle">Thông Báo</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                          <span aria-hidden="true">&times;</span>
+                        </button>
+                      </div>
+                      <div class="modal-body">
+                        Bạn muốn quay lại trang danh sách bài đăng
+                      </div>
+                      <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Đóng</button>
+                        <button type="button" class="btn btn-primary" (click)="onSubmit()">Quay Lại</button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </form> <!-- /form -->
+  </div>
+</div>

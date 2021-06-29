@@ -1,0 +1,152 @@
+<header>
+  <title>Quản lý CV</title>
+</header>
+<div id="main">
+  <div class="modal fade" id="modal-app-install" aria-hidden="true" style="display: none;">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h4 class="modal-title"></h4>
+        </div>
+        <div class="modal-body" style="padding: 0px">
+          <a target="_blank" href="https://www.topcv.vn/app"><img
+            src="https://www.topcv.vn/images/app_install/popup.jpg" class="img-responsive" alt="Download APP TOPCV"></a>
+        </div>
+        <div class="modal-footer">
+          <button type="button" id="btn-close-modal-app-install" class="btn btn-default pull-left" data-dismiss="modal">
+            Đóng
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="container">
+    <div class="row" *ngIf="account.id_account == this.id_now; else checkAccount">
+      <div class="col-sm-8" >
+        <div class="box-group">
+          <div class="box-group-header">
+            <div class="row">
+              <div class="box-group-title col-sm-6 col-md-9">
+                <a>Danh sách CV</a>
+              </div>
+              <div class="box-group-toolbox col-sm-6 col-md-3 text-right">
+                <a href="#" class="btn btn-topcv-primary btn-sm"><span class="fa fa-plus-circle"></span> Tạo mới</a>
+              </div>
+            </div>
+          </div>
+          <div class="box-group-body">
+            <div id="cv-list" *ngFor="let item of cv |paginate: {itemsPerPage: 5, currentPage: pageOfItems}">
+              <div class="box box-white cv no-gutter clearfix">
+                <div class="hidden-xs col-sm-3 col-cv-thumb">
+                  <a href="https://i.topcv.vn/phanthanhhai?ref=3800738" target="_blank" class="cv-thumb">
+                    <img src="https://www.topcv.vn/images/cv/screenshots/thumbs/cv-template-thumbnails-v1.1/default.png"
+                         class="img-responsive"></a></div>
+                <div class="col-xs-12 col-sm-9 col-cv-data">
+                  <div class="clearfix">
+                    <h4 class="cv-title pull-left"><!---->
+                      <a [href]="item.path" target="_blank" class="text-highlight bold"></a>
+                    </h4>
+                    <span class="cv-date text-gray pull-right">
+                    <i aria-hidden="true" class="fa fa-clock-o text-highlight"></i>{{item.create_date |date:'dd/MM/yyyy' }}</span>
+                  </div>
+                  <div class="cv-url text-gray"><input type="text" onclick="this.select();" [ngModel]="item.path" readonly="readonly"></div>
+                  <ul class="cv-action text-dark-gray">
+                    <li><a target="_blank" [href]="item.path" class="btn btn-sm bold"><i class="fa fa-eye"></i> Xem</a>
+                    </li>
+                    <li>
+                      <a class="btn btn-sm bold" (click)="deletebyid(item.id_CV)">
+                        <i class="fa fa-trash"></i>
+                        Xóa</a>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+              <div class="text-center">
+              </div>
+              <div class="box box-white cv no-gutter clearfix box-no-padding">
+              </div>
+            </div>
+            <pagination-controls (pageChange)="pageOfItems = $event"></pagination-controls>
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-4" id="sidebar">
+        <div class="box box-white text-center-sm">
+          <div class="card-body">
+                <div class="d-flex flex-column align-items-center text-center">
+                  <img [src]="account.image||'https://firebasestorage.googleapis.com/v0/b/fir-angular-66583.appspot.com/o/avatar-1577909_1280.png?alt=media&token=d7eeaf14-9686-48ee-b313-973b26c57435' " class="rounded-circle" width="100" height="100"
+                       style="display: inline-block">
+                  <div class="mt-3">
+                    <h4>{{account.fullName}}</h4>
+                    <hr>
+                    <h5 class="text-muted font-size-sm">{{account.companyName}}</h5>
+                    <p class="text-muted font-size-sm">{{account.postion}}</p>
+                    <p class="text-muted font-size-sm">{{account.address}}</p>
+                    <div class="card mt-3">
+                      <button class="btn btn-topcv-primary" routerLink="/profile/{{account.id_account}}">Cập nhật thông tin tài khoản</button>
+                  </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="box box-white text-center-sm">
+          <div class="row">
+            <div class="text-center cv-count-header">
+              <div class="text-highlight">
+                <strong style="font-size: 20px;">CV của bạn đã đẹp?</strong>
+                <p class="text-gray" style="font-size: 13px">Bao nhiêu NTD đang quan tâm tới Hồ sơ của bạn?</p>
+              </div>
+            </div>
+            <div class="col-md-4">
+              <div class="cv-count text-center ">
+                <div class="cv-count-number">CV</div>
+                <div>.......</div>
+              </div>
+            </div>
+            <div class="col-md-8" style="padding-top: 5px">
+              <p>Hãy tạo ngay CV đẹp và mới nhất tại đây!</p>
+              <div class="text-center">
+                <a href="#" target="_blank" class="btn btn-sm btn-topcv-primary">Tạo CV ngay</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div >
+     </div>
+  <ng-template #checkAccount>
+    <div class="circles">
+      <p style="color: #0f9a2e"><br>
+      </p>
+    </div>
+  </ng-template>
+</div>
+<link rel="stylesheet" href="https://www.topcv.vn/cv-new/css/download-v2.css?v=1.1.1">
+<div id="exportMask" class="non-printable" style="">
+  <div class="export-modal-wraper">
+    <div class="downloadable-show" style="display: none;">
+      <div class="col-left">
+        <a href="https://www.topcv.vn/khoa-hoc-phong-van" target="_blank">
+          <img src="/images/khoa-hoc-phong-van-verticle.png">
+        </a>
+      </div>
+      <div class="col-center">
+        <div class="col-center-top">
+          <a href="https://www.topcv.vn/brand/topcv/tuyen-dung/chuyen-vien-tu-van-tuyen-dung-j61634.html"
+             target="_blank"><img src="https://www.topcv.vn/images/topcv-nhan-vien-kinh-doanh.jpg" alt=""></a>
+        </div>
+        <div class="col-center-bottom">
+          <iframe width="100%" height="276" id="popup-video-iframe" src="" frameborder="0" allowfullscreen=""></iframe>
+        </div>
+      </div>
+      <div class="col-right">
+        <div>
+        </div>
+      </div>
+    </div>
+    <div style="clear: both;"></div>
+  </div>
+</div>
+
+
+

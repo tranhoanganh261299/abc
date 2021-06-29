@@ -1,0 +1,92 @@
+<header>
+  <title>
+    Chi tiết bình luận
+  </title>
+</header>
+<!-- Main Content -->
+<div id="content">
+  <h1 class="h3 mb-2 text-gray-800">List Bình luận By</h1>
+  <h1 class="h3 mb-2 text-gray-800">{{share.title}}</h1>
+  <div class="col-lg-9">
+    <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
+      <i class="fa fa-bars"></i>
+    </button>
+    <!-- Topbar Search -->
+    <form class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
+      <div class="input-group">
+        <input type="text" class="form-control" name="keyword" [(ngModel)]="keyword" placeholder="Tìm Kiếm">
+        <div class="input-group-append">
+          <button class="btn btn-primary" type="button" (click)="search()">
+            <i class="fas fa-search fa-sm"></i>
+          </button>
+        </div>
+      </div>
+    </form>
+  </div>
+  <!-- Begin Page Content -->
+  <div class="container-fluid">
+    <!-- DataTales Example -->
+    <div class="card mb-4">
+      <div class="card-header py-3">
+      </div>
+      <div class="card-body">
+        <div class="table-responsive">
+          <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+            <thead>
+            <tr>
+              <th>STT</th>
+              <th>ID</th>
+              <th>Tiêu Đề</th>
+              <th>Người Bình Luận</th>
+              <th>Ngày Tạo</th>
+              <th>Hành Động</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let item of commentlist | paginate: {itemsPerPage: 5, currentPage: pageOfItems}, let i = index">
+              <td>{{i+1}}</td>
+              <td>{{item.idcoment}}</td>
+              <td>{{item.content}}</td>
+              <td>{{item.account.username}}</td>
+              <td>{{item.create_date|date:'dd/MM/yyyy'}}</td>
+              <td>
+                <a class="btn btn-danger"  data-toggle="modal" data-target="#exampleModalCenter"  (click)="getOne(item.idcoment)">Xóa Bình Luận</a>
+              </td>
+            </tr>
+            </tbody>
+          </table>
+        </div>
+        <div>
+          <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="exampleModalCenterTitle">Thông Báo</h5>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <div class="modal-body">
+                  Bạn muốn xóa bình luận ra khỏi Dữ liệu
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Đóng</button>
+                  <button type="button" class="btn btn-danger" (click)="getCommentDeleteById()">Xoá tài khoản</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="card-footer pb-0 pt-3">
+      <pagination-controls (pageChange)="pageOfItems = $event"></pagination-controls>
+    </div>
+  </div>
+  <!-- /.container-fluid -->
+</div>
+<!-- End of Main Content -->
+
+<!-- Footer -->
+<!-- End of Footer -->
+

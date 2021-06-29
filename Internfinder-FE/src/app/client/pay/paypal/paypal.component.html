@@ -1,0 +1,31 @@
+<title>Thanh Toán</title>
+<div class="container">
+  <div style="margin: auto">
+    <div class="img" style="width: 300px;margin: auto; height: 125px">
+      <img src="assets/admin/img/454-removebg-preview.png"></div>
+    <div class="#">
+      <section class="fiList-icon_container">
+        <div class="fiList-icon_sideBySide">
+          <a href="https://www.paypal.com/myaccount/money/banks/new" data-name="addBank" target="_blank"
+             class="interstitial-entryLink test_addNewBank" pa-marked="1"><img
+            src="https://www.paypalobjects.com/ui-web/money-icons/generic/addBankIcon_fiList.svg" alt="Add Bank"
+            aria-hidden="true"><span class="col-xs-12 vx_text-body-md_medium test_bankPrimaryText fiList-linkBankText">Liên kết ngân hàng</span></a>
+        </div>
+        <div class="verticalLine-wrapper">
+          <hr class="vx_hr-alt verticalLine">
+        </div>
+        <div class="fiList-icon_sideBySide"><a target="_blank"
+                                               href="https://www.paypal.com/myaccount/money/cards/new/manual"
+                                               data-name="addCard" class="interstitial-entryLink test_addNewCard"
+                                               pa-marked="1"><img class="fiList-addCardIcon"
+                                                                  src="https://www.paypalobjects.com/ui-web/money-icons/generic/addCardIcon.svg"
+                                                                  alt="" aria-hidden="true"><span
+          class="col-xs-12 vx_text-body-md_medium test_cardPrimaryText linkFi-linkCardText">Liên kết thẻ</span></a>
+        </div>
+      </section>
+    </div>
+    <div style="margin: auto; width: 800px">
+      <ngx-paypal [config]="payPalConfig"></ngx-paypal>
+    </div>
+  </div>
+</div>

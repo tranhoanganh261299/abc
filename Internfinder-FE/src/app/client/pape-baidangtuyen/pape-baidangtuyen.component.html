@@ -1,0 +1,135 @@
+<header>
+  <title>Chi tiết bài đăng</title>
+</header>
+<style>
+  pre {
+    background: white
+  }
+
+  p {
+    padding-bottom: 10px;
+  }
+</style>
+<section id="intro" style="height: 335px">
+  <div class="carousel-item active"style="height: 335px">
+    <div class="carousel-background">
+      <img src="../../../assets/Client/minhhoang/imags/slider/slider1.jpg" alt=""style="height: 335px"></div>
+    <div class="carousel-container"style="height: 335px">
+      <div class="carousel-content">
+        <h2 class="font-color-white" style="margin-bottom: 91px;">Thông tin chi tiết</h2>
+      </div>
+    </div>
+  </div>
+</section>
+<div class="clearfix"></div>
+<section class="detail-desc" style="height: 430px">
+  <div class="container white-shadow">
+
+    <div class="row">
+
+      <div class="detail-pic">
+        <img [src]="new.account.image ||'https://firebasestorage.googleapis.com/v0/b/fir-angular-66583.appspot.com/o/avatar-1577909_1280.png?alt=media&token=d7eeaf14-9686-48ee-b313-973b26c57435' " alt="">
+      </div>
+
+      <div class="detail-status">
+        <span>{{new.working_time.substr(0, 10)}}</span>
+      </div>
+
+    </div>
+
+    <div class="row bottom-mrg">
+      <div class="col-md-8 col-sm-8">
+        <div class="detail-desc-caption">
+          <h4>{{new.title}}</h4>
+          <ul>
+            <li><span class="designation">{{new.account.companyName}}</span>
+            </li>
+            <li>Địa chỉ: {{new.account.address}}</li>
+            <li><i class="fa fa-briefcase"></i><span>{{new.type_of_work}}</span></li>
+            <li><i class="fa fa-flask"></i><span>{{new.position}}</span></li>
+            <li><i class="fa fa-money"></i><span>từ {{new.salary}} tr/tháng</span></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="col-md-4 col-sm-4">
+        <div class="get-touch">
+          <h4>Thông tin liên hệ</h4>
+          <ul>
+            <li><i class="fa fa-map-marker"></i><span>{{new.work_loaction}}</span></li>
+            <li><i class="fa fa-envelope"></i><span>{{new.account.email}}</span></li>
+            <li><i class="fa fa-globe"></i><span>{{new.account.email_contact}}</span></li>
+            <li><i class="fa fa-phone"></i><span>{{new.account.phone}}</span></li>
+          </ul>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="row no-padd">
+      <div class="detail pannel-footer">
+        <div class="col-md-5 col-sm-5">
+          <ul class="detail-footer-social">
+            <li><a href="#"><i class="fa fa-facebook"></i></a></li>
+            <li><a href="#"><i class="fa fa-google-plus"></i></a></li>
+            <li><a href="#"><i class="fa fa-twitter"></i></a></li>
+            <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
+            <li><a href="#"><i class="fa fa-instagram"></i></a></li>
+          </ul>
+        </div>
+
+        <div class="col-md-7 col-sm-7">
+          <div class="detail-pannel-footer-btn pull-right">
+            <div class="meta-line">
+              <div *ngIf="this.id_now != new.account?.id_account else checkEdit">
+                <a (click)="toggle()" id="bt" class="footer-btn grn-btn" style="{{nameStyle}}">
+                  {{buttonName}}
+                </a>
+                <ng-container *ngIf="show">
+                  <div style="float: right" [formGroup]="formApply">
+                    <div class="#" style="    margin: 10px;">
+                      <input type="file" class="upload" formControlName="url" (change)="showPreview($event)">
+                    </div>
+                    <a (click)="save()" class="footer-btn grn-btn" type="submit">Xác nhận</a>
+                    <a (click)="add()" class="footer-btn grn-btn" type="submit">Gửi CV</a>
+                  </div>
+                </ng-container>
+              </div>
+              <ng-template #checkEdit>
+                <div class="media-body">
+                  <div class="comment-meta">
+                    <a class="footer-btn grn-btn" (click)="updateBaiDang(new.idNews)">Sửa bài</a>
+                  </div>
+                </div>
+              </ng-template>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="full-detail-description full-detail">
+  <div class="container">
+    <div class="row-bottom">
+      <h2 class="detail-title">Mô tả công việc</h2>
+      <ul>
+        <li>
+          <pre>{{new.decriptions}}</pre>
+        </li>
+      </ul>
+    </div>
+    <div class=" row-bottom">
+      <h2 class="detail-title">Quyền lợi</h2>
+      <ul class="detail-list">
+        <pre>{{new.benefit}}</pre>
+      </ul>
+    </div>
+    <div class=" row-bottom">
+      <h2 class="detail-title">Yêu cầu công việc</h2>
+      <p>- Giới tính: {{new.sex}}</p>
+      <p>- Bằng cấp: {{new.degree}}</p>
+      <pre>{{new.job_requirements}}</pre>
+    </div>
+  </div>
+</section>

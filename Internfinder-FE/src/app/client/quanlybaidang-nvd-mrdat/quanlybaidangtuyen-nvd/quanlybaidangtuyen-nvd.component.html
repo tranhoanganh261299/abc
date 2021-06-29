@@ -1,0 +1,92 @@
+<header>
+  <title>Quản lý bài đăng</title>
+</header>
+<!-- Main Content -->
+<div id="content">
+  <div class="col-md-12">
+    <h1 class="h3 mb-2 text-gray-800">Danh Sách Bài Đăng</h1>
+  </div>
+  <!-- Begin Page Content -->
+  <div class="container-fluid" ><!-- Pagasde Heading -->
+    <!-- DataTales Example -->
+    <div class="card mb-4">
+      <div class="card-header py-3">
+      </div>
+      <div class="card-body">
+        <div class="table-responsive">
+          <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+            <thead>
+            <tr>
+              <th>STT</th>
+              <th>Tiêu Đề</th>
+              <th>Người Tạo</th>
+              <th>Ngày Tạo</th>
+              <th>Trạng Thái</th>
+              <th>Hành Động</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let item of newlist | paginate: {itemsPerPage: 5, currentPage: pageOfItems}, let i = index" >
+              <td>{{i + 1}}</td>
+              <td>{{item.title}}</td>
+              <td>{{item.account.fullName}}</td>
+              <td>{{item.create_date|date:'dd/MM/yyyy'}}</td>
+              <td>
+                <label class="switch">
+                  <input type="checkbox" [checked]="item.status">
+                  <span class="slider round"></span>
+                </label>
+              <td>
+                <button class="btn btn-warning"  (click)="getOneID(item.idNews)">Xem CV</button>
+              <button *ngIf="item.status == true;"   class="btn btn-success" onclick="document.getElementById('id01').style.display='block'" (click)="getOne(item.idNews)">Cập nhật</button>
+              <td>
+              <div class="modal" id="id01" aria-hidden="true">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h6  style="margin-right: 10px"> Bạn có muốn cập nhật trạng thái bài đăng ?</h6>
+                    <form [formGroup]="contactForm" id="ocntactForm"  class="form-horizontal" role="form">
+                      <label class="switch">
+                        <input type="checkbox" [(ngModel)]="news.status" [ngModelOptions]="{standalone: true}" >
+                        <span class="slider round"></span>
+                      </label>
+                    </form>
+                  </div>
+                  <div class="modal-footer">
+                    <h6>Lưu ý: Khi tắt trạng thái thì sẻ không thể bật lại ?</h6>
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" onclick="document.getElementById('id01').style.display='none'">Đóng</button>
+                    <button type="button" class="btn btn-success" (click)="OnEdit()">Đồng ý</button>
+                  </div>
+                </div>
+              </div>
+
+              <script>
+                // Get the modal
+                var modal = document.getElementById('id01');
+
+                // When the user clicks anywhere outside of the modal, close it
+                window.onclick = function (event) {
+                  if (event.target == modal) {
+                    modal.style.display = "none";
+                  }
+                }
+              </script>
+            </td>
+            </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+    <div class="card-footer pb-0 pt-3">
+      <pagination-controls (pageChange)="pageOfItems = $event"></pagination-controls>
+    </div>
+  </div >
+  <!-- /.container-fluid -->
+</div>
+<!-- End of Main Content -->
+
+<!-- Footer -->
+<!-- End of Footer -->
+

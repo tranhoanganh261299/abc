@@ -1,0 +1,17 @@
+.mat-horizontal-stepper-header-container {
+  white-space: nowrap;
+  display: flex;
+  align-items: center;
+  width: 800px;
+  margin: auto;
+}
+.cke_button_label {
+  color: white;
+  background: #28a745;
+  border-block: inherit;
+  padding: 6px;
+  border-style: solid;
+  border-width: 1px;
+  border-color: gray;
+}
+
